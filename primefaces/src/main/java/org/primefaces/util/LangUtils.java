@@ -51,7 +51,7 @@ import javax.xml.bind.DatatypeConverter;
 
 public class LangUtils {
 
-    public static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
+    public static final Object[] EMPTY_OBJECT_ARRAY = {};
     private static final Pattern CAPITAL_CASE = Pattern.compile("(?<=.)(?=\\p{Lu})");
 
     private LangUtils() {
@@ -289,12 +289,14 @@ public class LangUtils {
     }
 
     @SafeVarargs
-    public static final <T> List<T> unmodifiableList(T... args) {
+    public static <T> List<T> unmodifiableList(T... args) {
         return Collections.unmodifiableList(Arrays.asList(args));
     }
 
+    @SafeVarargs
     public static <E> Set<E> newLinkedHashSet(E... elements) {
-        Set<E> set = new LinkedHashSet<>(elements.length);
+        int size = (elements.length * 4 + 2) / 3;
+        Set<E> set = new LinkedHashSet<>(size);
         Collections.addAll(set, elements);
         return set;
     }
