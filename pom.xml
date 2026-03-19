@@ -157,7 +157,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <proc>full</proc> <!-- see: https://github.com/projectlombok/lombok/issues/3752 -->
                 </configuration>
                 <executions>
                     <execution>
