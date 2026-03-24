@@ -1,5 +1,3 @@
 
-jdk:
-  - openjdk17
 install:
   - mvn install -DskipTests -am -pl primefaces
