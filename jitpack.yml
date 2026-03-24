@@ -1,3 +1,0 @@
-
-install:
-  - mvn install -DskipTests -am -pl primefaces
