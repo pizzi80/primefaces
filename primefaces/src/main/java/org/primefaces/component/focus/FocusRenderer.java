@@ -28,7 +28,6 @@ import org.primefaces.renderkit.CoreRenderer;
 import org.primefaces.renderkit.RendererUtils;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -39,14 +38,12 @@ import javax.faces.context.ResponseWriter;
 
 public class FocusRenderer extends CoreRenderer {
 
-    private static final Map<String, Integer> SEVERITY_ORDINALS = new HashMap<>();
-
-    static {
-        SEVERITY_ORDINALS.put("info", FacesMessage.SEVERITY_INFO.getOrdinal());
-        SEVERITY_ORDINALS.put("warn", FacesMessage.SEVERITY_WARN.getOrdinal());
-        SEVERITY_ORDINALS.put("error", FacesMessage.SEVERITY_ERROR.getOrdinal());
-        SEVERITY_ORDINALS.put("fatal", FacesMessage.SEVERITY_FATAL.getOrdinal());
-    }
+    private static final Map<String, Integer> SEVERITY_ORDINALS = Map.of(
+            "info", FacesMessage.SEVERITY_INFO.getOrdinal(),
+            "warn", FacesMessage.SEVERITY_WARN.getOrdinal(),
+            "error", FacesMessage.SEVERITY_ERROR.getOrdinal(),
+            "fatal", FacesMessage.SEVERITY_FATAL.getOrdinal()
+    );
 
     @Override
     public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
