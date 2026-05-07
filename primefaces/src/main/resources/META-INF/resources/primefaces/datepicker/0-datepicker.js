@@ -52,7 +52,7 @@
             showIcon: false,
             icon: 'ui-icon ui-icon-calendar',
             showOnFocus: true,
-            focusOnSelect: false,
+            focusOnSelect: true,
             keepInvalid: false,
             numberOfMonths: 1,
             view: 'date',

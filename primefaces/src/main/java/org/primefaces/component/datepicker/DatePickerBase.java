@@ -168,7 +168,7 @@ public abstract class DatePickerBase extends UICalendar implements Widget, Input
     }
 
     public boolean isFocusOnSelect() {
-        return (Boolean) getStateHelper().eval(PropertyKeys.focusOnSelect, false);
+        return (Boolean) getStateHelper().eval(PropertyKeys.focusOnSelect, true);
     }
 
     public void setFocusOnSelect(boolean focusOnSelect) {
