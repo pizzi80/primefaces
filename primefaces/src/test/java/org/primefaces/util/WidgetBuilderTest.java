@@ -60,7 +60,7 @@ class WidgetBuilderTest {
         builder.finish();
 
         assertEquals(
-                "<script id=\"accoId_s\" type=\"text/javascript\">$(function(){"
+                "<script id=\"accoId_s\">$(function(){"
                         + "PrimeFaces.cw(\"AccordionPanel\",\"acco\",{id:\"accoId\"});});</script>",
                 writer.toString());
     }
@@ -81,7 +81,7 @@ class WidgetBuilderTest {
         builder.finish();
 
         assertEquals(
-                "<script id=\"accoId_s\" type=\"text/javascript\">PrimeFaces.cw(\"AccordionPanel\",\"acco\",{id:\"accoId\"});</script>",
+                "<script id=\"accoId_s\">PrimeFaces.cw(\"AccordionPanel\",\"acco\",{id:\"accoId\"});</script>",
                 writer.toString());
     }
 
@@ -95,7 +95,7 @@ class WidgetBuilderTest {
         builder.finish();
 
         assertEquals(
-                "<script id=\"accoId_s\" type=\"text/javascript\">$(window)"
+                "<script id=\"accoId_s\">$(window)"
                         + ".on(\"load\",function(){PrimeFaces.cw(\"AccordionPanel\",\"acco\",{id:\"accoId\"});});</script>",
                 writer.toString());
     }
@@ -110,7 +110,7 @@ class WidgetBuilderTest {
         builder.finish();
 
         assertEquals(
-                "<script id=\"accoId_s\" type=\"text/javascript\">PrimeFaces"
+                "<script id=\"accoId_s\">PrimeFaces"
                         + ".onElementLoad($(PrimeFaces.escapeClientId(\"test\")),"
                         + "function(){PrimeFaces.cw(\"AccordionPanel\",\"acco\",{id:\"accoId\"});});</script>",
                 writer.toString());
@@ -134,7 +134,7 @@ class WidgetBuilderTest {
         builder.finish();
 
         assertEquals(
-                "<script id=\"dt1_s\" type=\"text/javascript\">$(function(){PrimeFaces"
+                "<script id=\"dt1_s\">$(function(){PrimeFaces"
                         + ".cw(\"DataTable\",\"dt\",{id:\"dt1\",selectionMode:\"single\",lazy:true});});</script>",
                 writer.toString());
     }
@@ -157,7 +157,7 @@ class WidgetBuilderTest {
         builder.callback("onRowSelect", "function(row)", "alert(row);");
         builder.finish();
 
-        assertEquals("<script id=\"dt1_s\" type=\"text/javascript\">$(function(){"
+        assertEquals("<script id=\"dt1_s\">$(function(){"
                 + "PrimeFaces.cw(\"DataTable\",\"dt\",{id:\"dt1\",selectionMode:\"single\",lazy:true,"
                 + "onRowSelect:function(row){alert(row);}});});</script>", writer.toString());
     }
@@ -183,7 +183,7 @@ class WidgetBuilderTest {
         String output = writer.toString();
         assertFalse(output.contains(defaultValue));
 
-        String expectedOutput = "<script id=\"myComponent1_s\" type=\"text/javascript\">PrimeFaces"
+        String expectedOutput = "<script id=\"myComponent1_s\">PrimeFaces"
                 + ".cw(\"MyComponent\",\"myComponent\",{id:\"myComponent1\"});</script>";
         assertEquals(expectedOutput, output);
     }
@@ -207,7 +207,7 @@ class WidgetBuilderTest {
 
         String output = writer.toString();
 
-        String expectedOutput = "<script id=\"myComponent1_s\" type=\"text/javascript\">PrimeFaces"
+        String expectedOutput = "<script id=\"myComponent1_s\">PrimeFaces"
                 + ".cw(\"MyComponent\",\"myComponent\",{id:\"myComponent1\","
                 + "someAttribute:\"<script>alert(\\x27Hello World!\\x27)<\\/script>\"});</script>";
         assertEquals(expectedOutput, output);

@@ -23,13 +23,10 @@
  */
 package org.primefaces.renderkit;
 
-import org.primefaces.context.PrimeApplicationContext;
 import org.primefaces.util.Constants;
 import org.primefaces.util.HTML;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.faces.FactoryFinder;
@@ -47,10 +44,10 @@ public class RendererUtils {
 
     private static final Logger LOGGER = Logger.getLogger(RendererUtils.class.getName());
 
-    private static Method methodViewRootGetDoctype = null;
-    private static Method methodDoctypeGetRootElement = null;
-    private static Method methodDoctypeGetPublic = null;
-    private static Method methodDoctypeGetSystem = null;
+//    private static Method methodViewRootGetDoctype = null;
+//    private static Method methodDoctypeGetRootElement = null;
+//    private static Method methodDoctypeGetPublic = null;
+//    private static Method methodDoctypeGetSystem = null;
 
     private RendererUtils() {
         // Hide constructor
@@ -157,51 +154,53 @@ public class RendererUtils {
      *      will be rendered with a HTML5 doctype.
      */
     public static boolean isOutputHtml5Doctype(FacesContext context) {
-        PrimeApplicationContext applicationContext = PrimeApplicationContext.getCurrentInstance(context);
-        String html5ComplianceSetting = applicationContext.getConfig().getHtml5Compliance();
+        return true;
 
-        if ("true".equalsIgnoreCase(html5ComplianceSetting)) {
-            return true;
-        }
-
-        if ("auto".equalsIgnoreCase(html5ComplianceSetting)) {
-            UIViewRoot viewRoot = context.getViewRoot();
-            if (viewRoot == null) {
-                return false;
-            }
-
-            if (!PrimeApplicationContext.getCurrentInstance(context).getEnvironment().isAtLeastJsf40()) {
-                return false;
-            }
-
-            try {
-                if (methodViewRootGetDoctype == null) {
-                    methodViewRootGetDoctype = viewRoot.getClass().getMethod("getDoctype");
-                }
-                Object doctype = methodViewRootGetDoctype.invoke(viewRoot);
-                if (doctype == null) {
-                    return false;
-                }
-
-                if (methodDoctypeGetSystem == null) {
-                    methodDoctypeGetRootElement = doctype.getClass().getMethod("getRootElement");
-                    methodDoctypeGetPublic = doctype.getClass().getMethod("getPublic");
-                    methodDoctypeGetSystem = doctype.getClass().getMethod("getSystem");
-                }
-
-                String rootElement = (String) methodDoctypeGetRootElement.invoke(doctype);
-                String publicVal = (String) methodDoctypeGetPublic.invoke(doctype);
-                String system = (String) methodDoctypeGetSystem.invoke(doctype);
-
-                return "html".equalsIgnoreCase(rootElement)
-                        && publicVal == null
-                        && system == null;
-            }
-            catch (Exception e) {
-                LOGGER.log(Level.SEVERE, "Could not detect Doctype of current view!", e);
-            }
-        }
-
-        return false;
+//        PrimeApplicationContext applicationContext = PrimeApplicationContext.getCurrentInstance(context);
+//        String html5ComplianceSetting = applicationContext.getConfig().getHtml5Compliance();
+//
+//        if ("true".equalsIgnoreCase(html5ComplianceSetting)) {
+//            return true;
+//        }
+//
+//        if ("auto".equalsIgnoreCase(html5ComplianceSetting)) {
+//            UIViewRoot viewRoot = context.getViewRoot();
+//            if (viewRoot == null) {
+//                return false;
+//            }
+//
+//            if (!PrimeApplicationContext.getCurrentInstance(context).getEnvironment().isAtLeastJsf40()) {
+//                return false;
+//            }
+//
+//            try {
+//                if (methodViewRootGetDoctype == null) {
+//                    methodViewRootGetDoctype = viewRoot.getClass().getMethod("getDoctype");
+//                }
+//                Object doctype = methodViewRootGetDoctype.invoke(viewRoot);
+//                if (doctype == null) {
+//                    return false;
+//                }
+//
+//                if (methodDoctypeGetSystem == null) {
+//                    methodDoctypeGetRootElement = doctype.getClass().getMethod("getRootElement");
+//                    methodDoctypeGetPublic = doctype.getClass().getMethod("getPublic");
+//                    methodDoctypeGetSystem = doctype.getClass().getMethod("getSystem");
+//                }
+//
+//                String rootElement = (String) methodDoctypeGetRootElement.invoke(doctype);
+//                String publicVal = (String) methodDoctypeGetPublic.invoke(doctype);
+//                String system = (String) methodDoctypeGetSystem.invoke(doctype);
+//
+//                return "html".equalsIgnoreCase(rootElement)
+//                        && publicVal == null
+//                        && system == null;
+//            }
+//            catch (Exception e) {
+//                LOGGER.log(Level.SEVERE, "Could not detect Doctype of current view!", e);
+//            }
+//        }
+//
+//        return false;
     }
 }
