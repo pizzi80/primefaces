@@ -295,7 +295,7 @@ public class LangUtils {
 
     @SafeVarargs
     public static <E> Set<E> newLinkedHashSet(E... elements) {
-        int size = (elements.length * 4 + 2) / 3;
+        int size = (int) Math.ceil(elements.length / 0.75);
         Set<E> set = new LinkedHashSet<>(size);
         Collections.addAll(set, elements);
         return set;

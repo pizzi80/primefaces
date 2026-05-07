@@ -45,7 +45,7 @@ public class InputMaskRenderer extends InputRenderer {
 
     @Override
     public void decode(FacesContext context, UIComponent component) {
-        final InputMask inputMask = (InputMask) component;
+        InputMask inputMask = (InputMask) component;
 
         if (!shouldDecode(inputMask)) {
             return;
@@ -57,7 +57,7 @@ public class InputMaskRenderer extends InputRenderer {
         String submittedValue = context.getExternalContext().getRequestParameterMap().get(clientId);
 
         if (submittedValue != null) {
-            final String mask = inputMask.getMask();
+            String mask = inputMask.getMask();
             if (LangUtils.isNotBlank(mask)) {
 
                 // #6469/#11958 strip mask characters in case of optional values

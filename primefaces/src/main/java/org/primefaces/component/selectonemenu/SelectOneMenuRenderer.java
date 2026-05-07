@@ -23,6 +23,7 @@
  */
 package org.primefaces.component.selectonemenu;
 
+import org.primefaces.component.api.InputHolder;
 import org.primefaces.component.column.Column;
 import org.primefaces.expression.SearchExpressionUtils;
 import org.primefaces.renderkit.SelectOneRenderer;
@@ -296,10 +297,26 @@ public class SelectOneMenuRenderer extends SelectOneRenderer {
                 writer.writeAttribute(HTML.ARIA_DISABLED, "true", null);
             }
 
+            if (menu.isRequired()) {
+                writer.writeAttribute(HTML.ARIA_REQUIRED, "true", null);
+            }
+
+            if (!menu.isValid()) {
+                writer.writeAttribute(HTML.ARIA_INVALID, "true", null);
+            }
+
             encodeAriaLabel(writer, menu);
             renderARIACombobox(context, menu);
             renderPassThruAttributes(context, menu, HTML.TAB_INDEX);
             renderDomEvents(context, menu, HTML.BLUR_FOCUS_EVENTS);
+
+            if (menu instanceof InputHolder) {
+                InputHolder inputHolder = ((InputHolder) menu);
+                String labelledBy = inputHolder.getLabelledBy();
+                if (LangUtils.isNotBlank(labelledBy)) {
+                    writer.writeAttribute(HTML.ARIA_LABELLEDBY, labelledBy, null);
+                }
+            }
 
             String label = menu.getLabel();
             if (label != null) {
