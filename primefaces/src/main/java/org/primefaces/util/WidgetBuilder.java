@@ -39,9 +39,10 @@ import javax.faces.context.ResponseWriter;
  */
 public class WidgetBuilder {
 
+    protected final FacesContext context;
+    protected final PrimeConfiguration configuration;
+
     protected boolean endFunction;
-    protected FacesContext context;
-    protected PrimeConfiguration configuration;
 
     public WidgetBuilder(FacesContext context, PrimeConfiguration configuration) {
         this.context = context;
