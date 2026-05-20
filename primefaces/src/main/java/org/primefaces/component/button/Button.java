@@ -45,9 +45,7 @@ public class Button extends ButtonBase {
         String icon = getIcon();
         Object value = getValue();
         boolean hasIcon = LangUtils.isNotBlank(icon);
-
         String styleClass = Constants.EMPTY_STRING;
-        
         if (value != null) {
             if (hasIcon) {
                 styleClass = getIconPos().equals("left") ? HTML.BUTTON_TEXT_ICON_LEFT_BUTTON_CLASS : HTML.BUTTON_TEXT_ICON_RIGHT_BUTTON_CLASS;
