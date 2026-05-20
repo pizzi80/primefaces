@@ -138,11 +138,11 @@ public class RendererUtils {
      * @throws IOException if any error occurs
      */
     public static void encodeScriptTypeIfNecessary(FacesContext context) throws IOException {
-        if (isOutputHtml5Doctype(context)) {
-            return;
-        }
-        ResponseWriter writer = context.getResponseWriter();
-        writer.writeAttribute("type", SCRIPT_TYPE, null);
+//        if (isOutputHtml5Doctype(context)) {
+//            return;
+//        }
+//        ResponseWriter writer = context.getResponseWriter();
+//        writer.writeAttribute("type", SCRIPT_TYPE, null);
     }
 
     /**
