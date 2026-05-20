@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.primefaces</groupId>
         <artifactId>primefaces-parent</artifactId>
-        <version>15.0.15.2</version>
+        <version>15.0.15.3</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -963,8 +963,8 @@
                         </goals>
                         <configuration>
                             <skip>${jakarta.jar.skip}</skip>
-                            <shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>jakarta</shadedClassifierName>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>       <!-- disabilitiamo doppia release... jakarta di default -->
+<!--                            <shadedClassifierName>jakarta</shadedClassifierName>-->  <!-- commentato perchè non vogliamo build separata per jakarta -->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
