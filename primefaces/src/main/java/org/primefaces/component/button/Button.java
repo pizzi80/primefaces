@@ -24,6 +24,7 @@
 package org.primefaces.component.button;
 
 import org.primefaces.util.ComponentUtils;
+import org.primefaces.util.Constants;
 import org.primefaces.util.HTML;
 import org.primefaces.util.LangUtils;
 
@@ -43,15 +44,19 @@ public class Button extends ButtonBase {
     public String resolveStyleClass() {
         String icon = getIcon();
         Object value = getValue();
-        String styleClass = "";
+        boolean hasIcon = LangUtils.isNotBlank(icon);
 
-        if (value != null && LangUtils.isBlank(icon)) {
-            styleClass = HTML.BUTTON_TEXT_ONLY_BUTTON_CLASS;
+        String styleClass = Constants.EMPTY_STRING;
+        
+        if (value != null) {
+            if (hasIcon) {
+                styleClass = getIconPos().equals("left") ? HTML.BUTTON_TEXT_ICON_LEFT_BUTTON_CLASS : HTML.BUTTON_TEXT_ICON_RIGHT_BUTTON_CLASS;
+            }
+            else {
+                styleClass = HTML.BUTTON_TEXT_ONLY_BUTTON_CLASS;
+            }
         }
-        else if (value != null && LangUtils.isNotBlank(icon)) {
-            styleClass = getIconPos().equals("left") ? HTML.BUTTON_TEXT_ICON_LEFT_BUTTON_CLASS : HTML.BUTTON_TEXT_ICON_RIGHT_BUTTON_CLASS;
-        }
-        else if (value == null && LangUtils.isNotBlank(icon)) {
+        else if (hasIcon) {
             styleClass = HTML.BUTTON_ICON_ONLY_BUTTON_CLASS;
         }
 
