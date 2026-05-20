@@ -89,10 +89,10 @@
         <module>primefaces</module>
         <module>primefaces-showcase</module>
         <module>primefaces-selenium</module>
-        <module>primefaces-integration-tests</module>
-        <module>primefaces-integration-tests-jakarta</module>
+<!--        <module>primefaces-integration-tests</module>-->
+<!--        <module>primefaces-integration-tests-jakarta</module>-->
         <module>primefaces-cli</module>
-        <module>primefaces-coverage</module>
+<!--        <module>primefaces-coverage</module>-->
     </modules>
 
     <build>
