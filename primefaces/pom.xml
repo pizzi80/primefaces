@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.primefaces</groupId>
         <artifactId>primefaces-parent</artifactId>
-        <version>15.0.15.1</version>
+        <version>15.0.15.2</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -17,7 +17,7 @@
     <name>PrimeFaces</name>
 
     <properties>
-        <minify.disabled>true</minify.disabled>
+        <minify.disabled>false</minify.disabled>
         <jakarta.jar.skip>false</jakarta.jar.skip>
         <cyclonedx.skip>true</cyclonedx.skip>
         <resources.dir.compressed>${project.build.directory}/classes/META-INF/resources/primefaces</resources.dir.compressed>
